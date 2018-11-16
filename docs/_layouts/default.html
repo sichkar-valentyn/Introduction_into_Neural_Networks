@@ -65,7 +65,7 @@
 On the figure below the simple one neuron is shown.
 <br />It has three inputs and one output.</p>
 
-<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/neuron.png" alt="Neuron" /></p>
+<p><img src="images/neuron.png" alt="Neuron" /></p>
 
 <p><br />Using this neuron we will solve the classical problem, that is shown below.</p>
 <ul>
@@ -80,7 +80,7 @@ On the figure below the simple one neuron is shown.
 <br />This fifth <em>set of inputs</em> is called <b>Testing set</b>.
 <br />In the mathematical representation of NN we use matrices with numbers and to operate with neurons we provide operations between these matrices as it is shown below on the figure.</p>
 
-<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/matrices.png" alt="Matrices" /></p>
+<p><img src="images/matrices.png" alt="Matrices" /></p>
 
 <p><br /></p>
 
@@ -100,25 +100,25 @@ On the figure below the simple one neuron is shown.
 
 <p>Equation that is used by neuron for calculating the output is as following:</p>
 
-<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/equation_1.png" alt="Equation" /></p>
+<p><img src="images/equation_1.png" alt="Equation" /></p>
 
 <p>where <em>w</em> - is the weight and <em>I</em> - is the Input value.</p>
 
 <p>In order to normalize the output value, the Sigmoid function is used which is mathematically convenient in this case. The function is as following:</p>
 
-<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/sigmoid_function.png" alt="Sigmoid Function" /></p>
+<p><img src="images/sigmoid_function.png" alt="Sigmoid Function" /></p>
 
 <p>Instead of the <em>x</em> we put the sum from the previous equation and as a result will obtain the normalized output of the neuron in the range between <em>0</em> and <em>1</em>. Till now we will not use threshold value to make this example simple.</p>
 
 <p>Next step is to adjust the weights.
 <br />For calculation how much it is needed to change the weights we will use <b>Derivative</b> of the <b>Sigmoid equation</b> with respect to the output value of the neuron. There are few main reasons why to use derivative. The adjustments will be done in proportion to the value of error. As we multiply by input, which is <em>0</em> or <em>1</em>, and if the input is <em>0</em>, the weight will not be changed. And if the current weight is pretty much correct, the <b>Sigmoid Gradient</b> will help not to change it too much. Also, it is good to know <a href="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/Theory/Gradient_descent.md">Gradient descent</a>. Sigmoid Gradient we find by taking the derivative from output of the neuron:</p>
 
-<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/sigmoid_gradient.png" alt="Sigmoid Gradient" /></p>
+<p><img src="images/sigmoid_gradient.png" alt="Sigmoid Gradient" /></p>
 
 <p>where <b>O</b> - is an output of the neuron.
 <br />So, the finall equation to adjust weights is as following:</p>
 
-<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/correct_weights.png" alt="Correct weights" /></p>
+<p><img src="images/correct_weights.png" alt="Correct weights" /></p>
 
 <p>where <b>I</b> - is an input value, <b>error</b> - is the difference between the desired output and neuron’s output, and <b>O</b> - is an output value.</p>
 
@@ -303,7 +303,7 @@ On the figure below the simple one neuron is shown.
 
 <p>As a result we get our figure:</p>
 
-<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/figure_1.png" alt="Figure" /></p>
+<p><img src="images/figure_1.png" alt="Figure" /></p>
 
 <p>We can see that after <b>200 iterations</b> the accuracy doesn’t change too much.
 <br />But how to calculate the exact number of iterations to achieve needed accuracy?
