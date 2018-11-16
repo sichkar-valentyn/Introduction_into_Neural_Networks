@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,maximum-scale=2">
+    <link rel="stylesheet" type="text/css" media="screen" href="/Introduction_into_Neural_Networks/assets/css/style.css?v=9a8f0514a1465d574e4bc0d1b644a43f2886dde3">
+
+<!-- Begin Jekyll SEO tag v2.5.0 -->
+<title>Introduction in Neural Network (NN) with Python | Introduction_into_Neural_Networks</title>
+<meta name="generator" content="Jekyll v3.7.4" />
+<meta property="og:title" content="Introduction in Neural Network (NN) with Python" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Introduction into Neural Networks" />
+<meta property="og:description" content="Introduction into Neural Networks" />
+<link rel="canonical" href="https://sichkar-valentyn.github.io/Introduction_into_Neural_Networks/" />
+<meta property="og:url" content="https://sichkar-valentyn.github.io/Introduction_into_Neural_Networks/" />
+<meta property="og:site_name" content="Introduction_into_Neural_Networks" />
+<script type="application/ld+json">
+{"@type":"WebSite","headline":"Introduction in Neural Network (NN) with Python","url":"https://sichkar-valentyn.github.io/Introduction_into_Neural_Networks/","name":"Introduction_into_Neural_Networks","description":"Introduction into Neural Networks","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/sichkar-valentyn/Introduction_into_Neural_Networks">View on GitHub</a>
+
+          <h1 id="project_title">Introduction_into_Neural_Networks</h1>
+          <h2 id="project_tagline">Introduction into Neural Networks</h2>
+
+          
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1 id="introduction-in-neural-network-nn-with-python">Introduction in Neural Network (NN) with Python</h1>
+<p>Explaining basic concepts on how NN works and implementing simple, kind of classical, task in Python using just <b>numpy</b> library without special toolkits and without high-level NN libraries.
+<br /><a href="https://doi.org/10.5281/zenodo.1317904"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.1317904.svg" alt="DOI" /></a></p>
+
+<h2 id="content">Content</h2>
+<p>Theory and experimental results (on this page):</p>
+
+<ul>
+  <li><a href="#basic-concepts-of-artificial-nn">Basic concepts of artificial NN</a></li>
+  <li><a href="#training-of-the-neuron">Training of the neuron</a></li>
+  <li><a href="#writing-a-code-in-python">Writing a code in Python</a></li>
+  <li><a href="#results">Results</a></li>
+  <li><a href="#analysis-of-results">Analysis of results</a></li>
+</ul>
+
+<p><br /></p>
+
+<h3 id="basic-concepts-of-artificial-nn"><a id="basic-concepts-of-artificial-nn">Basic concepts of artificial NN</a></h3>
+<p>In our brain there are billions of billions neurons that are connected with each other with so called synapses (connectors). When we are thinking, neurons send signals to another neurons and depending on the power of this signals collected by synapses, the neurons can be activated and produce output to another neurons.
+<br /><br /> 
+On the figure below the simple one neuron is shown.
+<br />It has three inputs and one output.</p>
+
+<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/neuron.png" alt="Neuron" /></p>
+
+<p><br />Using this neuron we will solve the classical problem, that is shown below.</p>
+<ul>
+  <li>Set of inputs #1 = 1 1 1; Output #1 = 1</li>
+  <li>Set of inputs #2 = 1 0 1; Output #2 = 1</li>
+  <li>Set of inputs #3 = 0 0 1; Output #3 = 0</li>
+  <li>Set of inputs #4 = 0 1 1; Output #4 = 0</li>
+</ul>
+
+<p>The Inputs above are called <b>Training sets</b> and the Outputs - <b>Desired results</b>.
+<br />We will try to find the output for the <b> Set of inputs #5 = 1 0 0</b> (the output should be equal to 1).
+<br />This fifth <em>set of inputs</em> is called <b>Testing set</b>.
+<br />In the mathematical representation of NN we use matrices with numbers and to operate with neurons we provide operations between these matrices as it is shown below on the figure.</p>
+
+<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/matrices.png" alt="Matrices" /></p>
+
+<p><br /></p>
+
+<h3 id="training-of-the-neuron"><a id="training-of-the-neuron">Training of the neuron</a></h3>
+<p>Process where we teach our neuron to produce desired results (to ‘think’) is called <b>Training process</b>.
+<br />In order to begin the training process we need firstly to give the synapses (our input lines) weights. These weights will influence the output of the neuron.</p>
+<ul>
+  <li>So, we set the weights randomly, usually between 0 and 1.</li>
+  <li>After that we can start the training process by collecting inputs and multiplying them by appropriate weights and sending further to the neuron.</li>
+  <li>The neuron implements special mathematical equation to calculate the output.</li>
+  <li>When the output is received the error is calculated. The error in this case is the difference between desired result and produced current output of the neuron.</li>
+  <li>Using the error, the weights are adjusted according to the direction of this error with very small value.</li>
+</ul>
+
+<p>The training steps described above we will repeat <b>5000 times</b>.
+<br />After the neuron was trained it got the ability to ‘think’ and will produce correct prediction with <b>Testing set</b>. This technique is called <b><a href="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/Theory/Backpropagation.md">Back propagation</a></b>.</p>
+
+<p>Equation that is used by neuron for calculating the output is as following:</p>
+
+<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/equation_1.png" alt="Equation" /></p>
+
+<p>where <em>w</em> - is the weight and <em>I</em> - is the Input value.</p>
+
+<p>In order to normalize the output value, the Sigmoid function is used which is mathematically convenient in this case. The function is as following:</p>
+
+<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/sigmoid_function.png" alt="Sigmoid Function" /></p>
+
+<p>Instead of the <em>x</em> we put the sum from the previous equation and as a result will obtain the normalized output of the neuron in the range between <em>0</em> and <em>1</em>. Till now we will not use threshold value to make this example simple.</p>
+
+<p>Next step is to adjust the weights.
+<br />For calculation how much it is needed to change the weights we will use <b>Derivative</b> of the <b>Sigmoid equation</b> with respect to the output value of the neuron. There are few main reasons why to use derivative. The adjustments will be done in proportion to the value of error. As we multiply by input, which is <em>0</em> or <em>1</em>, and if the input is <em>0</em>, the weight will not be changed. And if the current weight is pretty much correct, the <b>Sigmoid Gradient</b> will help not to change it too much. Also, it is good to know <a href="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/Theory/Gradient_descent.md">Gradient descent</a>. Sigmoid Gradient we find by taking the derivative from output of the neuron:</p>
+
+<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/sigmoid_gradient.png" alt="Sigmoid Gradient" /></p>
+
+<p>where <b>O</b> - is an output of the neuron.
+<br />So, the finall equation to adjust weights is as following:</p>
+
+<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/correct_weights.png" alt="Correct weights" /></p>
+
+<p>where <b>I</b> - is an input value, <b>error</b> - is the difference between the desired output and neuron’s output, and <b>O</b> - is an output value.</p>
+
+<p><br /></p>
+
+<h3 id="writing-a-code-in-python"><a id="writing-a-code-in-python">Writing a code in Python</a></h3>
+<p>To write a code in Python for building and training NN we will not use special toolkits or NN libraries. Instead we will use powerful <b>numpy</b> library to deal with matrices. Code with a lot of comments is shown below.</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Creating a simple NN by using mathematical 'numpy' library</span>
+<span class="c"># We will use several methods from the library to operate with matrices</span>
+
+<span class="c"># Importing 'numpy' library</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="c"># Importing 'matplotlib' library to plot experimental results in form of figures</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+
+<span class="c"># Creating a class for Neural Network</span>
+<span class="k">class</span> <span class="nc">NN</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="c"># Using 'seed' for the random generator</span>
+        <span class="c"># It'll return the same random numbers each time the program runs</span>
+        <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="c"># Modeling simple Neural Network with just one neuron</span>
+        <span class="c"># Neuron has three inputs and one output</span>
+        <span class="c"># Initializing weights to 3 by 1 matrix</span>
+        <span class="c"># The values of the weights are in range from -1 to 1</span>
+        <span class="c"># We receive matrix 3x1 of weights (3 inputs and 1 output)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">weights_of_synapses</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">((</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span> <span class="o">-</span> <span class="mi">1</span>
+
+    <span class="c"># Creating function for normalizing weights and other results by Sigmoid curve</span>
+    <span class="k">def</span> <span class="nf">normalizing_results</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+    <span class="c"># Creating function for calculating a derivative of Sigmoid function (gradient of Sigmoid curve)</span>
+    <span class="c"># Which is going to be used for back propagation - correction of the weights</span>
+    <span class="c"># This derivative shows how good is the current weight</span>
+    <span class="k">def</span> <span class="nf">derivative_of_sigmoid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span>
+
+    <span class="c"># Creating function for running NN</span>
+    <span class="k">def</span> <span class="nf">run_nn</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">set_of_inputs</span><span class="p">):</span>
+        <span class="c"># Giving NN the set of input matrices</span>
+        <span class="c"># With 'numpy' function 'dot' we multiply set of input matrices to weights</span>
+        <span class="c"># Result is returned in normalized form</span>
+        <span class="c"># We multiply matrix 4x3 of inputs on matrix 3x1 of weights and receive matrix 4x1 of outputs</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalizing_results</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">set_of_inputs</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weights_of_synapses</span><span class="p">))</span>
+
+    <span class="c"># Creating function for training the NN</span>
+    <span class="k">def</span> <span class="nf">training_process</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">set_of_inputs_for_training</span><span class="p">,</span> <span class="n">set_of_outputs_for_training</span><span class="p">,</span> <span class="n">iterations</span><span class="p">):</span>
+        <span class="c"># Training NN desired number of times</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">iterations</span><span class="p">):</span>
+            <span class="c"># Feeding our NN with training set and calculating output</span>
+            <span class="c"># We multiply matrix 4x3 of inputs on matrix 3x1 of weights and receive matrix 4x1 of outputs</span>
+            <span class="n">nn_output</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">run_nn</span><span class="p">(</span><span class="n">set_of_inputs_for_training</span><span class="p">)</span>
+
+            <span class="c"># Calculating an error which is the difference between desired output and obtained output</span>
+            <span class="c"># We subtract matrix 4x1 of received outputs from matrix 4x1 of desired outputs</span>
+            <span class="n">nn_error</span> <span class="o">=</span> <span class="n">set_of_outputs_for_training</span> <span class="o">-</span> <span class="n">nn_output</span>
+
+            <span class="c"># Calculating correction values for weights</span>
+            <span class="c"># We multiply input to the error multiplied by Gradient of Sigmoid</span>
+            <span class="c"># In this way, the weights that do not fit too much will be corrected more</span>
+            <span class="c"># If some inputs are equal to 0, that will not influence to the value of weights</span>
+            <span class="c"># We use here function 'T' that transpose matrix and allows to multiply matrices</span>
+            <span class="c"># We multiply transposed matrix 4x3 of inputs (matrix.T = matrix 3x4) on matrix 4x1 for corrections</span>
+            <span class="c"># And receive matrix 3x1 of corrections</span>
+            <span class="n">corrections</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">set_of_inputs_for_training</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">nn_error</span> <span class="o">*</span> <span class="bp">self</span><span class="o">.</span><span class="n">derivative_of_sigmoid</span><span class="p">(</span><span class="n">nn_output</span><span class="p">))</span>
+
+            <span class="c"># Implementing corrections of weights</span>
+            <span class="c"># We add matrix 3x1 of current weights with matrix 3x1 of corrections and receive matrix 3x1 of new weights</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">weights_of_synapses</span> <span class="o">+=</span> <span class="n">corrections</span>
+
+
+<span class="c"># Creating NN by initializing instance of the class</span>
+<span class="n">single_neuron_neural_network</span> <span class="o">=</span> <span class="n">NN</span><span class="p">()</span>
+
+<span class="c"># Showing the weights of synapses initialized from the very beginning randomly</span>
+<span class="c"># We create here matrix 3x1 of weights</span>
+<span class="k">print</span><span class="p">(</span><span class="n">single_neuron_neural_network</span><span class="o">.</span><span class="n">weights_of_synapses</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="c"># [[-0.16595599]</span>
+<span class="c">#  [ 0.44064899]</span>
+<span class="c">#  [-0.99977125]]</span>
+
+<span class="c"># Creating a set of inputs and outputs for the training process</span>
+<span class="c"># We use here function 'array' of the 'numpy' library</span>
+<span class="c"># We create here matrix 4x3</span>
+<span class="n">input_set_for_training</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="c"># We create here matrix 1x4 and transpose it to matrix 4x1 at the same time</span>
+<span class="n">output_set_for_training</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c"># Starting the training process with data above and number of repetitions of 5000</span>
+<span class="n">single_neuron_neural_network</span><span class="o">.</span><span class="n">training_process</span><span class="p">(</span><span class="n">input_set_for_training</span><span class="p">,</span> <span class="n">output_set_for_training</span><span class="p">,</span> <span class="mi">5000</span><span class="p">)</span>
+
+<span class="c"># Showing the weights of synapses after training process</span>
+<span class="k">print</span><span class="p">(</span><span class="n">single_neuron_neural_network</span><span class="o">.</span><span class="n">weights_of_synapses</span><span class="p">)</span>
+<span class="k">print</span><span class="p">()</span>
+<span class="c"># [[ 8.95950703]</span>
+<span class="c">#  [-0.20975775]</span>
+<span class="c">#  [-4.27128529]]</span>
+
+<span class="c"># After the training process was finished we can run our NN with data for testing and obtain the result</span>
+<span class="c"># The data for testing is [1, 0, 0]</span>
+<span class="c"># The expected output is 1</span>
+<span class="k">print</span><span class="p">(</span><span class="n">single_neuron_neural_network</span><span class="o">.</span><span class="n">run_nn</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])))</span>
+
+<span class="c"># Congratulations! The output is equal to 0.99987 which is very close to 1</span>
+<span class="c"># [0.99987151]</span>
+ 
+</code></pre></div></div>
+
+<p><br /></p>
+
+<h3 id="results"><a id="results">Results</a></h3>
+<p>Set of inputs and outputs for the training process:
+<br /><b>input_set_for_training = np.array([[1, 1, 1], [1, 0, 1], [0, 0, 1], [0, 1, 1]])</b>
+<br />The output set we transposes into the vector with function ‘T’:
+<br /><b>output_set_for_training = np.array([[1, 1, 0, 0]]).T</b></p>
+
+<p>Weights of synapses initialized from the beginning randomly:
+<br /><b>[[-0.16595599]</b>
+<br /><b>[ 0.44064899]</b>
+<br /><b>[-0.99977125]]</b></p>
+
+<p>Weights of synapses after training process:
+<br /><b>[[ 8.95950703]</b>
+<br /><b>[-0.20975775]</b>
+<br /><b>[-4.27128529]]</b></p>
+
+<p>The data for testing after training is [1, 0, 0] and the expected output is 1.
+<br />Result is:
+<br /><b>[0.99987151]</b>
+<br /> Congratulations! The output is equal to <b>0.99987</b> which is very close to 1.</p>
+
+<p><br /></p>
+
+<h3 id="analysis-of-results"><a id="analysis-of-results">Analysis of results</a></h3>
+<p>Now we’re going to analyse obtained results and build the figure with <b>Outputs</b> and number of <b>Iterations</b> in order to understand the raising accuracy of output and needed amount of iterations for training.
+<br />Let’s consider following part of the code:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># Providing experimental analysis</span>
+<span class="c"># By this experiment we want to understand the needed amount of iterations to reach curtain accuracy</span>
+<span class="c"># Creating list to store the resulting data</span>
+<span class="n">lst_result</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c"># Creating list to store the number of iterations for each experiment</span>
+<span class="n">lst_iterations</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c"># Creating a loop and collecting resulted output data with different numbers of iterations</span>
+<span class="c"># From 10 to 1000 with step=10</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="c"># Create new instance of the NN class each time</span>
+    <span class="c"># In order not to be influenced from the previous training results</span>
+    <span class="n">single_neuron_neural_network_analysis</span> <span class="o">=</span> <span class="n">NN</span><span class="p">()</span>
+
+    <span class="c"># Starting the training process with number of repetitions equals to i</span>
+    <span class="n">single_neuron_neural_network_analysis</span><span class="o">.</span><span class="n">training_process</span><span class="p">(</span><span class="n">input_set_for_training</span><span class="p">,</span> <span class="n">output_set_for_training</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="c"># Collecting number of iterations in the list</span>
+    <span class="n">lst_iterations</span> <span class="o">+=</span> <span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+    <span class="c"># Now we run trained NN with data for testing and obtain the result</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">single_neuron_neural_network_analysis</span><span class="o">.</span><span class="n">run_nn</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+
+    <span class="c"># Collecting resulted outputs in the list</span>
+    <span class="n">lst_result</span> <span class="o">+=</span> <span class="p">[</span><span class="n">output</span><span class="p">]</span>
+
+
+<span class="c"># Plotting the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lst_iterations</span><span class="p">,</span> <span class="n">lst_result</span><span class="p">,</span> <span class="s">'b'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s">'Iterations via Output'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s">'Iterations'</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s">'Output'</span><span class="p">)</span>
+
+<span class="c"># Showing the plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+</code></pre></div></div>
+
+<p>As a result we get our figure:</p>
+
+<p><img src="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/images/figure_1.png" alt="Figure" /></p>
+
+<p>We can see that after <b>200 iterations</b> the accuracy doesn’t change too much.
+<br />But how to calculate the exact number of iterations to achieve needed accuracy?
+<br />Let’s consider final part of the code:</p>
+
+<div class="language-py highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># And finally lets find the exact number of needed iterations fo specific accuracy</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">10</span>  <span class="c"># Iterations</span>
+<span class="n">output</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c"># Output</span>
+<span class="c"># Creating a while loop and training NN</span>
+<span class="c"># Stop when output is with accuracy 0.999</span>
+<span class="k">while</span> <span class="n">output</span> <span class="o">&lt;</span> <span class="mf">0.999</span><span class="p">:</span>
+    <span class="c"># Again we create new instance of the NN class each time</span>
+    <span class="c"># In order not to be influenced from the previous training results above</span>
+    <span class="n">single_neuron_neural_network_analysis_1</span> <span class="o">=</span> <span class="n">NN</span><span class="p">()</span>
+
+    <span class="c"># Starting the training process with number of repetitions equals to i</span>
+    <span class="n">single_neuron_neural_network_analysis_1</span><span class="o">.</span><span class="n">training_process</span><span class="p">(</span><span class="n">input_set_for_training</span><span class="p">,</span> <span class="n">output_set_for_training</span><span class="p">,</span> <span class="n">i</span><span class="p">)</span>
+
+    <span class="c"># Now we run trained NN with data for testing and obtain the result</span>
+    <span class="n">output</span> <span class="o">=</span> <span class="n">single_neuron_neural_network_analysis_1</span><span class="o">.</span><span class="n">run_nn</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+
+    <span class="c"># Increasing the number of iterations</span>
+    <span class="n">i</span> <span class="o">+=</span> <span class="mi">10</span>
+
+
+<span class="c"># Showing the found number of iterations for accuracy 0.999</span>
+<span class="k">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c"># Needed numbers of iterations is equal to 740</span>
+
+</code></pre></div></div>
+
+<p>As we can see, to reach the accuracy <b>0.999</b> we need <b>740</b> iterations.</p>
+
+<p>Full code is available here: <a href="https://github.com/sichkar-valentyn/Neural_Networks_for_Computer_Vision/blob/master/Codes/Intro_simple_NN.py">Intro_simple_NN.py</a></p>
+
+<p><br /></p>
+
+<h3 id="mit-license">MIT License</h3>
+<h3 id="copyright-c-2018-valentyn-n-sichkar">Copyright (c) 2018 Valentyn N Sichkar</h3>
+<h3 id="githubcomsichkar-valentyn">github.com/sichkar-valentyn</h3>
+<h3 id="reference-to">Reference to:</h3>
+<p>Valentyn N Sichkar. Neural Networks for computer vision in autonomous vehicles and robotics // GitHub platform. DOI: 10.5281/zenodo.1317904</p>
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        
+        <p class="copyright">Introduction_into_Neural_Networks maintained by <a href="https://github.com/sichkar-valentyn">sichkar-valentyn</a></p>
+        
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+  </body>
+</html>
